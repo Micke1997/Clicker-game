@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="tab-bar">
+      <a href="index2.html" class="active">Start</a>
+      <a href="manufacture.html">Tillverkning</a>
+      <a href="bank.html">Bank</a>
+      <a href="bageri.html">Bageri</a>
+      <a href="elektronik.html">Elektronik</a>
+    </div>
+    <div class="info-bar">
+      💰 <span id="money">0</span> kr | ⭐ XP: <span id="xp">0</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Produkter att köpa</h2>
+
+    <div class="products">
+
+      <div class="product">
+        <p>🍎 Äppel – 3 kr</p>
+        <button onclick="buyProduct('Äppel', 3, 1)">Köp</button>
+        <p>Du har: <span id="count-Äppel">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🥛 Mjölk – 5 kr</p>
+        <button onclick="buyProduct('Mjölk', 5, 1)">Köp</button>
+        <p>Du har: <span id="count-Mjölk">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🌾 Mjöl – 7 kr</p>
+        <button onclick="buyProduct('Mjöl', 7, 1)">Köp</button>
+        <p>Du har: <span id="count-Mjöl">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🍌 Bannan – 10 kr</p>
+        <button onclick="buyProduct('Bannan', 10, 1)">Köp</button>
+        <p>Du har: <span id="count-Bannan">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🧱 Datorchassi – 800 kr</p>
+        <button onclick="buyProduct('Datorchassi', 800, 10)">Köp</button>
+        <p>Du har: <span id="count-Datorchassi">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>⚙️ Processor – 1200 kr</p>
+        <button onclick="buyProduct('Processor', 1200, 10)">Köp</button>
+        <p>Du har: <span id="count-Processor">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🧩 Moderkort – 1500 kr</p>
+        <button onclick="buyProduct('Moderkort', 1500, 10)">Köp</button>
+        <p>Du har: <span id="count-Moderkort">0</span> st</p>
+      </div>
+
+      <div class="product">
+        <p>🚗 Bil – 1000 kr</p>
+        <button onclick="buyProduct('Bil', 1000, 20)">Köp</button>
+        <p>Du har: <span id="count-Bil">0</span> st</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>
