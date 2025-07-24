@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tillverkning</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="tab-bar">
+      <a href="index2.html">Start</a>
+      <a href="manufacture.html" class="active">Tillverkning</a>
+      <a href="bank.html">Bank</a>
+      <a href="bageri.html">Bageri</a>
+      <a href="elektronik.html">Elektronik</a>
+    </div>
+    <div class="info-bar">
+      💰 <span id="money">0</span> kr | ⭐ XP: <span id="xp">0</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Tillverka produkter</h2>
+
+    <div class="products">
+
+      <!-- Äppelkaka -->
+      <div class="product">
+        <p>🍰 Äppelkaka (3 äpplen, 1 mjölk, 1 mjöl)</p>
+        <button onclick="makeCake('äppelkaka')">Tillverka</button>
+        <button onclick="sellCake('äppelkaka')">Sälj</button>
+        <p>Du har: <span id="cake-äppelkaka">0</span> st</p>
+      </div>
+
+      <!-- Banankaka -->
+      <div class="product">
+        <p>🍌 Banankaka (3 bananer, 2 mjölk, 1 mjöl)</p>
+        <button onclick="makeCake('banankaka')">Tillverka</button>
+        <button onclick="sellCake('banankaka')">Sälj</button>
+        <p>Du har: <span id="cake-banankaka">0</span> st</p>
+      </div>
+
+      <!-- Dator -->
+      <div class="product">
+        <p>🖥️ Dator (1 moderkort, 1 processor, 1 datorchassi)</p>
+        <button onclick="makeCake('dator')">Tillverka</button>
+        <button onclick="sellCake('dator')">Sälj</button>
+        <p>Du har: <span id="cake-dator">0</span> st</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>
