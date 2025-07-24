@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bageri</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="tab-bar">
+      <a href="index2.html">Start</a>
+      <a href="manufacture.html">Tillverkning</a>
+      <a href="bank.html">Bank</a>
+      <a href="bageri.html" class="active">Bageri</a>
+      <a href="elektronik.html">Elektronik</a>
+    </div>
+    <div class="info-bar">
+      💰 <span id="money">0</span> kr | ⭐ XP: <span id="xp">0</span>
+    </div>
+  </div>
+
+  <div class="content" id="bageri-content">
+    <!-- Denna del ersätts beroende på om bageriet är köpt -->
+  </div>
+
+  <script src="shared.js"></script>
+  <script>
+    const bageriContent = document.getElementById('bageri-content');
+    const hasBakery = JSON.parse(localStorage.getItem('hasBakery')) || false;
+
+    function updateBakeryUI() {
+      if (hasBakery) {
+        const autoCount = parseInt(localStorage.getItem("autoCakeCount") || "0");
+        bageriContent.innerHTML = `
+          <h2>Bageriet</h2>
+          <div class="products">
+
+            <div class="product">
+              <p>👩‍🍳 Anställ personal (kostar 5000 kr)</p>
+              <button onclick="hireStaff()">Anställ</button>
+            </div>
+
+            <div class="product">
+              <p>🍰 Äppelkaka i lager: <span id="cake-äppelkaka">0</span></p>
+              <button onclick="autoMakeCake('äppelkaka')">Tillverka (om ingredienser finns)</button>
+              <button onclick="sellCake('äppelkaka')">Sälj</button>
+        <p>Nästa kaka om: <span id="employee-timer">10</span> sekunder</p>
+            </div>
+
+            <div class="product">
+              <p>🍌 Banankaka i lager: <span id="cake-banankaka">0</span></p>
+              <button onclick="autoMakeCake('banankaka')">Tillverka (om ingredienser finns)</button>
+              <button onclick="sellCake('banankaka')">Sälj</button>
+        <p>Nästa kaka om: <span id="employee-timer">10</span> sekunder</p>
+            </div>
+
+            <div class="product">
+              <p>📈 Automatiskt bakade kakor: <span id="auto-count">${autoCount}</span></p>
+            </div>
+
+          </div>
+        `;
+      } else {
+        bageriContent.innerHTML = `
+          <div class="products">
+            <div class="product">
+              <p>🔒 Du har inte låst upp bageriet ännu.</p>
+              <p>Vill du köpa bageriet för 50 000 kr?</p>
+              <button onclick="buyBakery()">Köp Bageri</button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function buyBakery() {
+      let money = parseInt(localStorage.getItem('money') || '0');
+      if (money >= 50000) {
+        money -= 50000;
+        localStorage.setItem('money', money);
+        localStorage.setItem('hasBakery', true);
+        updateMoneyDisplay();
+        updateBakeryUI();
+      } else {
+        alert("Du har inte tillräckligt med pengar.");
+      }
+    }
+
+    function hireStaff() {
+      let money = parseInt(localStorage.getItem('money') || '0');
+      if (money >= 5000) {
+        money -= 5000;
+        localStorage.setItem('money', money);
+        localStorage.setItem('staffHired', true);
+        updateMoneyDisplay();
+        alert("Personal anställd! De börjar baka automatiskt när ingredienser finns.");
+      } else {
+        alert("Du har inte råd att anställa personal.");
+      }
+    }
+
+    function autoMakeCake(type) {
+      const inventory = JSON.parse(localStorage.getItem('inventory') || '{}');
+      const cakes = JSON.parse(localStorage.getItem('cakes') || '{}');
+      const staffHired = localStorage.getItem('staffHired') === 'true';
+
+      if (!staffHired) {
+        alert("Du måste anställa personal först.");
+        return;
+      }
+
+      let needed = {};
+      if (type === 'äppelkaka') needed = { 'Äppel': 3, 'Mjölk': 1, 'Mjöl': 1 };
+      if (type === 'banankaka') needed = { 'Bannan': 3, 'Mjölk': 2, 'Mjöl': 1 };
+
+      const hasIngredients = Object.entries(needed).every(([item, count]) => (inventory[item] || 0) >= count);
+
+      if (hasIngredients) {
+        // Dra ingredienser
+        Object.entries(needed).forEach(([item, count]) => {
+          inventory[item] -= count;
+        });
+        cakes[type] = (cakes[type] || 0) + 1;
+
+        const autoCount = parseInt(localStorage.getItem("autoCakeCount") || "0") + 1;
+        localStorage.setItem("autoCakeCount", autoCount);
+
+        localStorage.setItem('inventory', JSON.stringify(inventory));
+        localStorage.setItem('cakes', JSON.stringify(cakes));
+
+        document.getElementById(`cake-${type}`).textContent = cakes[type];
+        const autoCountEl = document.getElementById("auto-count");
+        if (autoCountEl) autoCountEl.textContent = autoCount;
+
+        alert(`${type === 'äppelkaka' ? 'Äppelkaka' : 'Banankaka'} tillverkad!`);
+      } else {
+        alert("Inte tillräckligt med ingredienser.");
+      }
+    }
+
+    updateBakeryUI();
+    updateMoneyDisplay();
+    updateXPDisplay();
+  </script>
+</body>
+</html>
