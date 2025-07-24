@@ -1,0 +1,108 @@
+body {
+  font-family: sans-serif;
+  padding: 10px;
+  background-color: #f0f8ff;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.tab-bar a {
+  flex: 1;
+  text-align: center;
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.tab-bar a.active {
+  background-color: #0056b3;
+  font-weight: bold;
+}
+
+.info-bar {
+  font-size: 16px;
+  text-align: center;
+  background-color: #e0f0ff;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.content {
+  padding: 10px 0;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product p {
+  margin: 5px 0;
+}
+
+.product button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.action {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.action button {
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.action button:disabled {
+  background-color: #ccc;
+}
