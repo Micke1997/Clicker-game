@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="tab-bar">
+      <a href="index2.html">Start</a>
+      <a href="manufacture.html">Tillverkning</a>
+      <a href="bank.html">Bank</a>
+      <a href="bageri.html">Bageri</a>
+      <a href="elektronik.html">Elektronik</a>
+    </div>
+    <div class="info-bar">
+      💰 <span id="money">0</span> kr | ⭐ XP: <span id="xp">0</span>
+    </div>
+  </div>
+
+  <h2>Banköversikt</h2>
+
+  <div class="action">
+    <p>Totala pengar på kontot:</p>
+    <strong><span id="bank-money">0</span> kr</strong>
+  </div>
+
+  <!-- 🔁 Dynamisk bonus-sektion -->
+  <div id="bonus-section"></div>
+
+  <!-- 👨‍💻 Admin-knapp -->
+  <div id="admin-tools" style="display:block; margin-top:10px;">
+    <button onclick="giveAdminMoney()" class="action-button">Ge 50 000 kr (Admin)</button>
+  </div>
+
+  <script src="shared.js"></script>
+</body>
+</html>
